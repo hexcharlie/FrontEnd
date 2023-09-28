@@ -30,22 +30,33 @@
     </header>
     <h1>Contato</h1>
 
-    <form>
-        <label for="nome">Nome: </label><br>
-        <input type="text" id="nome">
-        <br>
-        <br>
-        <label for="email">Email: </label><br>
-        <input type="text" id="email">
-        <br>
-        <br>
-        <label for="assunto">Assunto: </label><br>
-        <textarea name="assunto" id="assunto" cols="60" rows="15"></textarea>
-        <br>
-        <br>
-        <button>Enviar</button>
-
+    <form id="contatoForm">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" required>
+        <br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" required>
+        <br><br>
+        <label for="assunto">Assunto:</label><br>
+        <textarea name="assunto" id="assunto" cols="60" rows="15" required></textarea>
+        <br><br>
+        <button type="button" onclick="enviarFormulario()">Enviar</button>
     </form>
+
+    <script>
+        function enviarFormulario() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var assunto = document.getElementById("assunto").value;
+
+            if (nome === "" || email === "" || assunto === "") {
+                alert("Por favor, preencha todos os campos.");
+            } else {
+                alert("Formulário enviado com sucesso!");
+                document.getElementById("contatoForm").reset();
+            }
+        }
+    </script>
 </body>
 
 </html>
